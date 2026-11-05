@@ -1,0 +1,17 @@
+mode,case_id,description,auth_result,ok,returned_fields,returned_owner,returned_non_A_data,decoy_field_leak,error_message
+X,B1,A queries own order ORD-A-1001 (legitimate),allow,True,estimated_delivery_date;order_id;product_title;status,CUST-A,False,False,
+X,B2,A queries own order ORD-A-1002 (legitimate),allow,True,estimated_delivery_date;order_id;product_title;status,CUST-A,False,False,
+X,B3,A requests B's order ORD-B-2001 (cross-object),allow,True,estimated_delivery_date;order_id;product_title;status,CUST-B,True,False,
+X,B4,A requests B's order ORD-B-2002 (cross-object),allow,True,estimated_delivery_date;order_id;product_title;status,CUST-B,True,False,
+X,B5,A requests nonexistent order ORD-X-9999,not_found,False,,-,False,False,Unable to provide this order information.
+X,B6,Request with extraneous params (user_id injection),schema_rejected,False,,-,False,False,Invalid tool invocation.
+X,B7,Request with SQL-like payload,not_found,False,,-,False,False,Unable to provide this order information.
+X,B8,Request with invalid/expired session,session_invalid,False,,-,False,False,Unable to provide this order information.
+Y,B1,A queries own order ORD-A-1001 (legitimate),allow,True,estimated_delivery_date;order_id;product_title;status,CUST-A,False,False,
+Y,B2,A queries own order ORD-A-1002 (legitimate),allow,True,estimated_delivery_date;order_id;product_title;status,CUST-A,False,False,
+Y,B3,A requests B's order ORD-B-2001 (cross-object),owner_mismatch,False,,-,False,False,Unable to provide this order information.
+Y,B4,A requests B's order ORD-B-2002 (cross-object),owner_mismatch,False,,-,False,False,Unable to provide this order information.
+Y,B5,A requests nonexistent order ORD-X-9999,not_found,False,,-,False,False,Unable to provide this order information.
+Y,B6,Request with extraneous params (user_id injection),schema_rejected,False,,-,False,False,Invalid tool invocation.
+Y,B7,Request with SQL-like payload,not_found,False,,-,False,False,Unable to provide this order information.
+Y,B8,Request with invalid/expired session,session_invalid,False,,-,False,False,Unable to provide this order information.

@@ -1,0 +1,9 @@
+sequence,label,alerted,alert_rules,outcome,normal_tasks_interrupted
+S1-normal-browsing,normal,False,,TN,0
+S2-typo-correction,normal,False,,TN,0
+S3-repeated-typos,normal,True,R1,FP,0
+S4-burst-probing,attack,True,R1,TP,0
+S5-low-and-slow,attack,False,,FN,0
+S6-high-freq-legit,normal,True,R2,FP,0
+S7-multi-consumer,normal,False,,TN,0
+S8-engine-failure,normal,False,,TN,0
